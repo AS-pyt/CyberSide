@@ -1,0 +1,360 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-color: #130d1d;
+    font-family: "Courier New", Courier, monospace;
+    color: #a1ccf3;
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Center everything vertically and horizontally */
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Header Link Styles */
+#header a {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#header a:hover {
+    text-decoration: underline;
+}
+
+/* Centering and styling the terminal container */
+.container {
+    text-align: center;
+    margin: 10px auto;
+    width: 100%; /* Set width to 100% for responsiveness */
+    max-width: 960px; /* Limit max width to ensure readability */
+    display: flex;
+    justify-content: center;
+}
+
+/* Terminal styling */
+.terminal {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%; /* Ensures responsiveness */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0 auto; /* Ensure it's centered */
+}
+
+/* Header for the terminal (colored dots) */
+.terminal-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.red {
+    background-color: #ff3b30;
+}
+
+.yellow {
+    background-color: #ffcc00;
+}
+
+.green {
+    background-color: #4cd964;
+}
+
+/* Styling the terminal content */
+.terminal-content {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 50px; /* Add space for the input */
+    color: rgb(51, 255, 0);
+}
+
+/* Style for error messages (command not found) */
+.error {
+    color: red; /* Red color for error text */
+    font-weight: bold; /* Make the error text stand out */
+}
+
+/* Input styling */
+#terminal-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #1c1c1c;
+    color: rgb(51, 255, 0);
+    border: none;
+    border-radius: 5px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px;
+}
+
+/* Ensuring the input doesn't overlap with the text */
+.terminal-content, #terminal-input {
+    margin-bottom: 10px;
+}
+
+/* Footer Styles */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 960px; /* Limit max width to ensure readability */
+    margin-top: 50px;
+    padding: 0 20px; /* Ensure the footer isn't too wide */
+}
+
+.footer-section {
+    flex: 1;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #d7abff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 3px dashed gray;
+    margin: 20px 0;
+}
+
+/* Paragraph Styles */
+p {
+    margin: 20px;
+    text-align: justify;
+    width: 80%;
+    max-width: 960px; /* Prevents paragraphs from stretching too wide */
+}
+
+a {
+    color: rgb(255, 142, 90);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* Mobile responsiveness */
+@media (max-width: 1200px) {
+    /* Adjust container for smaller screens */
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    /* Footer Styles */
+.footer-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the footer items */
+    align-items: center;
+    width: 90%; /* Center the footer */
+    margin-top: 50px;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+}
+
+.footer-section {
+    margin: 0 15px; /* Reduced gap between footer sections */
+    text-align: center;
+    margin-right: 1000px;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #d7abff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Paragraph Styles */
+p {
+    width: 90%;
+    margin: 10px auto; /* Reduced gap between paragraphs */
+    text-align: justify;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.container{
+    margin-left: 35%;
+}
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+     /* Adjust container for smaller screens */
+     .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    /* Footer Styles */
+.footer-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the footer items */
+    align-items: center;
+    width: 90%; /* Center the footer */
+    margin-top: 50px;
+    flex-wrap: wrap; /* Allow items to wrap if needed */
+}
+
+.footer-section {
+    margin: 0 15px; /* Reduced gap between footer sections */
+    text-align: center;
+    margin-right: 1000px;
+}
+
+.footer-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #d7abff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Paragraph Styles */
+p {
+    width: 90%;
+    margin: 10px auto; /* Reduced gap between paragraphs */
+    text-align: justify;
+    margin-left: 10%;
+    margin-right: -2%;
+}
+.container{
+    margin-left: 35%;
+}
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    /* Adjust container for smaller screens */
+    .container {
+        padding: 20px;
+        width: 90%;
+        margin-left: 0; /* Center the container */
+        text-align: center; /* Center content inside the container */
+    }
+
+    /* Footer Styles */
+    .footer-container {
+        display: flex;
+        flex-direction: column; /* Stack footer sections vertically */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Align items in the center */
+        width: 90%; /* Center the footer */
+        margin-top: 50px;
+    }
+
+    .footer-section {
+        margin: 20px 0; /* Added space between sections */
+        text-align: center; /* Center text in each section */
+        width: 100%; /* Make sections take full width */
+    }
+
+    .footer-section h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-section li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section a {
+        color: #d7abff;
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+
+    /* Paragraph Styles */
+    p {
+        width: 90%;
+        margin: 10px auto; /* Reduced gap between paragraphs */
+        text-align: center; /* Center the paragraphs */
+    }
+
+    /* Ensure footer links and other content are centered */
+    .footer-container a {
+        text-align: center;
+    }
+
+    /* Fixing the "Interesting Stuff" section */
+    .footer-section:last-child {
+        margin-right: 0; /* Remove any negative margin on the last section */
+    }
+}

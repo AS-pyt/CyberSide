@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSide.net</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<hr>
+
+<!-- Centered clickable header -->
+<div id="header" style="text-align: center; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-size: 2em;">
+    <a href="index.html">Aaryan Shah</a>
+</div>
+<hr style="margin: 20px auto; width: 100%; border: none; border-top: 1px dashed hwb(258 22% 62%);">
+
+<!-- Welcome Section -->
+<p style="text-align: center; margin: 0 auto; width: 80%;">@aaryans.pic <b style="color: #8cff8c;">$ echo welcome.md</b></p>
+<h1 style="text-align: center; margin: 0 auto; width: 80%; color: #ff8e5a; margin-top: .75%;">Welcome!</h1>
+
+<p>I’m Aaryan Shah, a curious mind driven by learning, building, and sharing. Whether it’s writing code, capturing the perfect shot, or exploring cybersecurity—I dive deep into the things that spark my interest. I don’t limit myself with labels; I create, experiment, and evolve.</p>
+
+<p>My passion lies in cybersecurity, especially in Governance, Risk, and Compliance (GRC). I believe security isn't just about defense—it's about awareness, empowerment, and responsibility. Alongside that, photography helps me slow down and appreciate the world through a creative lens.</p>
+
+<p>This website is my digital space—a blend of tech, thoughts, and visuals. You'll find articles on cybersecurity, tools I've built, resources I share, and sometimes reflections on life, learning, and everything in between. If it excites me, it might just intrigue you too.</p>
+
+<!-- CLI Terminal -->
+<div class="container" style="text-align: center; margin: 50px auto; width: 80%;">
+    <div class="terminal" style="text-align: left; margin: 10px auto; width: 100%; background-color: #000000; border-radius: 5px; padding: 10px;">
+        <div class="terminal-header" style="padding: 5px;">
+            <span class="dot red" style="background-color: red; width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span>
+            <span class="dot yellow" style="background-color: yellow; width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span>
+            <span class="dot green" style="background-color: green; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
+        </div>
+        <pre class="terminal-content" style="text-align: left; padding: 10px; white-space: pre-wrap; font-size: 16px;" id="terminal-output">
+Welcome to My Terminal Portfolio!
+
+Enter your command below to get started.
+
+Type 'help' to see a list of available commands.
+        </pre>
+
+        <!-- Terminal Input -->
+        <div style="position: relative; width: 100%; margin-top: 10px;">
+            <span style="position: absolute; left: 10px; top: 10px; color: #00ff00;">$</span>
+            <input type="text" id="terminal-input" placeholder="Type your command..." style="padding-left: 30px; width: 100%; background-color: #333; color: white; border: none; border-radius: 3px; font-family: monospace; font-size: 16px;">
+        </div>
+    </div>
+</div>
+
+<script>
+    const terminalInput = document.getElementById("terminal-input");
+    const terminalContent = document.getElementById("terminal-output");
+
+    const welcomeMessage = `\
+Welcome to My Terminal Portfolio!
+
+Enter your command below to get started.
+
+Type 'help' to see a list of available commands.
+    `;
+
+    const commands = {
+        help: `\
+about          - about CyberSide.net
+clear          - clear the terminal
+echo           - print out anything
+help           - check available commands
+history        - view command history
+pwd            - print current working directory
+socials        - check out my social accounts
+welcome        - display hero section
+whoami         - about current user
+Tab or Ctrl + i  => autocompletes the command
+Up Arrow         => go back to previous command
+Ctrl + l         => clear the terminal`,
+        about: "CyberSide.net is a platform for developer/hacker and tech enthusiast.",
+        clear: () => {
+            terminalContent.innerHTML = welcomeMessage;
+        },
+        echo: (input) => {
+            const message = input.slice(5).trim();
+            return message.length > 0 ? message : "No input provided to echo.";
+        },
+        history: () => history.join("\n"),
+        projects: "Here are some of my projects...",
+        pwd: "/home/visitor",
+        socials: "Follow me on instagram, GitHub @",
+        welcome: "Welcome to my terminal portfolio!",
+        whoami: "Current user: visitor"
+    };
+
+    let history = [];
+    let historyIndex = -1;
+
+    terminalInput.addEventListener("keydown", function(event) {
+        let command = terminalInput.value.trim();
+        let output = "";
+
+        if (event.key === "Enter") {
+            history.push(command);
+            historyIndex = history.length;
+
+            if (command in commands) {
+                output = typeof commands[command] === 'function' ? commands[command](command) : commands[command];
+            } else if (command.startsWith("echo ")) {
+                output = commands.echo(command);
+            } else {
+                output = `<span class="error" style="color: red;">command not found: ${command}</span>`;
+            }
+
+            terminalContent.innerHTML += `\n$ ${command}\n${output}\n`;
+            terminalInput.value = "";
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        if ((event.key === "Tab" || (event.key === "i" && event.ctrlKey)) && !event.repeat) {
+            event.preventDefault();
+            let suggestions = Object.keys(commands).filter(cmd => cmd.startsWith(command));
+            if (suggestions.length === 1) {
+                terminalInput.value = suggestions[0] + " ";
+            }
+        }
+
+        if (event.key === "ArrowUp") {
+            if (historyIndex > 0) {
+                historyIndex--;
+                terminalInput.value = history[historyIndex];
+            }
+        }
+
+        if (event.key === "ArrowDown") {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                terminalInput.value = history[historyIndex];
+            } else {
+                historyIndex = history.length;
+                terminalInput.value = "";
+            }
+        }
+
+        if (event.key === "l" && event.ctrlKey) {
+            event.preventDefault();
+            commands.clear();
+        }
+    });
+</script>
+
+<!-- Footer Section -->
+
+
+<div style="text-align: center; margin-top: 50px;">
+    <div style="display: inline-flex; align-items: center; gap: 10px;">
+        <a href="blog.html" style="font-size: 18px; text-decoration: none; color: #ff8e5a;">Blog</a>
+        <a href="https://www.linkedin.com/in/aaryan-shah-6aba05342/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24">
+        </a>
+    </div>
+</div>
+
+
+  
+
+
+<hr style="margin: 20px auto; width: 100%; border: none; border-top: 1px dashed rgb(60, 69, 87);">
+
+<!-- Custom Footer Links Can Go Below -->
+
+</body>
+</html>
